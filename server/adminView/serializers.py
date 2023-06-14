@@ -1,4 +1,6 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
+
 from .models import *
 
 
@@ -23,12 +25,21 @@ class AlumnoSerializer(ModelSerializer):
 class PropuestaSerializer(ModelSerializer):
     def to_representation(self, instance: Propuesta):
         return{
+
             'id': instance.pk,
             'nombrePropuesta': instance.nombrePropuesta,
             'descriptionPropuesta': instance.descriptionPropuesta,
-            'requisitos': instance.requisitos,
-            'nombreEmpresa': instance.nombreEmpresa.pk,
-            'carrera': instance.carrera.pk,
+            'puesto': instance.puesto,
+            'modalidad': instance.modalidad,
+            'nombreEmpresa': instance.nombreEmpresa,
+            'nombreConsultante': instance.nombreConsultante,
+            'telefono': instance.telefono,
+            'email': instance.email,
+            'carrera': instance.carrera.nombre,
+            'activo': instance.activo,
+            'alta': instance.alta,
+
+            #
 
         }
 
@@ -67,24 +78,26 @@ class EmpresaSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class EmpresaSolicitudCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmpresaSolicitud
+        exclude = ('carrera',)
+
+
 class EmpresaSolicitudSerializer(ModelSerializer):
-    def to_representation(self, instance: EmpresaSolicitud):
-        return{
-            'id': instance.pk,
-            'nombreEmpresa': f"{instance.nombreEmpresa}",
-            'nombreProyecto': instance.nombreProyecto,
-            'description': instance.description,
-            'puesto': instance.puesto,
-            'nombreConsultante': instance.nombreConsultante,
-            'telefono': instance.telefono,
-            'email': instance.email,
-            'carrera': instance.carrera.nombre,
-            'activo': instance.activo,
-        }
+    carrera = CarreraSerializer(read_only=True)
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['carrera'] = CarreraSerializer(instance.carrera).data
+        return representation
+
+    def update(self, instance, validated_data):
+        instance.activo = validated_data.get('activo', instance.activo)
+        instance.aceptada = validated_data.get('aceptada', instance.aceptada)
+        instance.save()
+        return instance
 
     class Meta:
         model = EmpresaSolicitud
         fields = '__all__'
-
-
-# //////////////////////////////////////////////////////////

@@ -49,7 +49,7 @@ class Empresa(models.Model):
     emailResponsable = models.EmailField('email', max_length=50)
     telefonoResponsable = models.CharField('telefono', max_length=50)
     carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
-
+    activo = models.BooleanField('activo', default=True)
     # nombreConsultante = models.CharField('Cnombre', max_length=100)
     # telefono = models.CharField('telefono', max_length=50)
     # email = models.EmailField('email', max_length=254)
@@ -71,10 +71,18 @@ class Propuesta(models.Model):
     nombrePropuesta = models.CharField('nombre', max_length=50)
     # descripcion del proyecto
     descriptionPropuesta = models.TextField('Descipcion', blank=True)
+    puesto = models.CharField('puesto', max_length=50,
+                              help_text='puesto laboral')
+    modalidad = models.CharField(
+        'modalidad', max_length=50, blank=True)
 
-    requisitos = models.TextField('requisitos', blank=True)
-    nombreEmpresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
+    nombreEmpresa = models.CharField('nombreEmpresa', max_length=50)
+    nombreConsultante = models.CharField('Cnombre', max_length=100, blank=True)
+    telefono = models.CharField('telefono', max_length=50)
+    email = models.EmailField('email', max_length=254, unique=True)
     carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
+    activo = models.BooleanField('activo', default=True)
+    alta = models.BooleanField("alta", default=False)
     # activo = models.BooleanField('activo', default=True)
 
     class Meta:
@@ -88,12 +96,15 @@ class EmpresaSolicitud(models.Model):
     description = models.TextField('descripcion', blank=True)
     puesto = models.CharField('puesto', max_length=50,
                               help_text='puesto laboral')
+
     nombreConsultante = models.CharField('Cnombre', max_length=100)
     telefono = models.CharField('telefono', max_length=50)
     email = models.EmailField('email', max_length=254)
     carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
     activo = models.BooleanField('activo', default=True)
-    # aceptada = models.BooleanField('aceptada', default=False)
+    modalidad = models.CharField(
+        'modalidad', max_length=50, blank=True)
+    aceptada = models.BooleanField('aceptada', default=False)
 
     class Meta:
         verbose_name = "EmpresaSolicitud"

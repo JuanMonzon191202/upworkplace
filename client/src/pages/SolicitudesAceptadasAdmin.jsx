@@ -12,7 +12,7 @@ const AdminView = () => {
       const data = await response.json();
       console.log(data); // Imprime los datos recibidos de la API
       const filteredPropuesta = data.filter(
-        (propuesta) => propuesta.activo === true
+        (propuesta) => propuesta.aceptada === true
       );
       console.log(filteredPropuesta); // Imprime los datos filtrados
       setPropuesta(filteredPropuesta); // Actualiza el estado con los datos filtrados
@@ -29,6 +29,11 @@ const AdminView = () => {
   return (
     <div className="container mt-3">
       <h1>Solicitudes de las Empresas</h1>
+      <h4>
+        En esta vista, se muestran las propuestas que han sido aceptadas
+        previamente. Estas propuestas están listas para ser presentadas a los
+        estudiantes.
+      </h4>
       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-10 g-3 mt-1">
         {propuesta.map((propuesta) => (
           <div className="col" key={propuesta.id}>
@@ -40,20 +45,13 @@ const AdminView = () => {
               <div className="card-footer">
                 <small className="text-nuted">{propuesta.carrera.nombre}</small>
               </div>
-              <Link to={`/detalle-propuesta/${propuesta.id}`}>
+              <Link to={`/Alta-Propuesta-Admin/${propuesta.id}`}>
                 <button type="button" className="btn btn-outline-primary">
                   Ver Detalles
                 </button>
               </Link>
             </div>
-            {/* <Link to={`/detalle-propuesta/${propuesta.id}`}>
-              <button
-                type="button"
-                className="btn btn-outline-primary btn-sm btn-block"
-              >
-                Ver Detalles
-              </button>
-            </Link> */}
+           
           </div>
         ))}
       </div>

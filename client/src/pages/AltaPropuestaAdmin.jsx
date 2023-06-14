@@ -8,66 +8,79 @@ const DetallePropuesta = () => {
 
   useEffect(() => {
     const getDetallePropuesta = async () => {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/EmpresaSolicitud/${id}`
-      );
-      const data = await response.json();
-      console.log(data);
-      setDetallePropuesta(data);
-      setActivo(data.activo);
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:8000/api/EmpresaSolicitud/${id}`
+        );
+        const data = await response.json();
+        console.log(data);
+        setDetallePropuesta(data);
+        setActivo(data.activo);
+      } catch (error) {
+        console.error("Error al obtener el detalle de la propuesta:", error);
+      }
     };
 
     getDetallePropuesta();
   }, [id]);
 
-  const handleRechazar = async () => {
-    const response = await fetch(
-      `http://127.0.0.1:8000/api/EmpresaSolicitud/${id}`,
-      {
-        method: "PUT",
+  const handleCrearEmpresaYPropuesta = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/Empresa", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          activo: false,
-          aceptada: false,
+          activo: true,
           nombreEmpresa: detallePropuesta.nombreEmpresa,
-          nombreProyecto: detallePropuesta.nombreProyecto,
-          description: detallePropuesta.description,
-          puesto: detallePropuesta.puesto,
-          nombreConsultante: detallePropuesta.nombreConsultante,
-          telefono: detallePropuesta.telefono,
-          email: detallePropuesta.email,
-          // carrera: detallePropuesta.carrera.id,
+          nombreResponsable: detallePropuesta.nombreConsultante,
+          telefonoResponsable: detallePropuesta.telefono,
+          emailResponsable: detallePropuesta.email,
+          carrera: detallePropuesta.carrera.id,
         }),
-      }
-    );
-    // Manejar la respuesta y actualizar el estado local si es necesario
-  };
+      });
 
-  const handleAceptar = async () => {
-    const response = await fetch(
-      `http://127.0.0.1:8000/api/EmpresaSolicitud/${id}`,
-      {
-        method: "PUT",
+      if (response.ok) {
+        // La empresa se creó exitosamente
+        // Puedes realizar las acciones necesarias, como actualizar el estado o redirigir a otra página
+      } else {
+        // Ocurrió un error al crear la empresa
+        const data = await response.json();
+        console.log("Error al crear la empresa:", data);
+      }
+
+      const response2 = await fetch("http://127.0.0.1:8000/api/Propuesta", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          activo: false,
-          aceptada: true,
+          nombrePropuesta: detallePropuesta.nombreProyecto,
           nombreEmpresa: detallePropuesta.nombreEmpresa,
-          nombreProyecto: detallePropuesta.nombreProyecto,
-          description: detallePropuesta.description,
+          modalidad: detallePropuesta.modalidad,
           puesto: detallePropuesta.puesto,
+          descriptionPropuesta: detallePropuesta.description,
           nombreConsultante: detallePropuesta.nombreConsultante,
-          telefono: detallePropuesta.telefono,
           email: detallePropuesta.email,
-          // carrera: detallePropuesta.carrera.id,
+          telefono: detallePropuesta.telefono,
+          carrera: detallePropuesta.carrera.id,
+          activo: true,
+          alta: true,
         }),
+      });
+
+      if (response2.ok) {
+        // La propuesta se creó exitosamente
+        // Puedes realizar las acciones necesarias, como actualizar el estado o redirigir a otra página
+      } else {
+        // Ocurrió un error al crear la propuesta
+        const data = await response2.json();
+        console.log("Error al crear la propuesta:", data);
       }
-    );
-    // Manejar la respuesta y actualizar el estado local si es necesario
+    } catch (error) {
+      console.log("Error al realizar la solicitud:", error);
+    }
   };
 
   if (!detallePropuesta) {
@@ -77,7 +90,6 @@ const DetallePropuesta = () => {
   const toggleActivo = () => {
     setActivo(!activo);
   };
-
   return (
     <div className="table-responsive">
       <table className="table table-striped">
@@ -123,11 +135,12 @@ const DetallePropuesta = () => {
         </tbody>
       </table>
       <div>
-        <button type="button" class="btn btn-danger" onClick={handleRechazar}>
-          Rechazar
-        </button>
-        <button type="button" class="btn btn-success" onClick={handleAceptar}>
-          Aceptar
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={handleCrearEmpresaYPropuesta}
+        >
+          Dar de alta al sistema
         </button>
       </div>
     </div>

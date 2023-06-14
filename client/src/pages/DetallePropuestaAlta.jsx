@@ -8,10 +8,9 @@ const DetallePropuesta = () => {
 
   useEffect(() => {
     const getDetallePropuesta = async () => {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/EmpresaSolicitud/${id}`
-      );
+      const response = await fetch(`http://127.0.0.1:8000/api/Propuesta/${id}`);
       const data = await response.json();
+      console.log(data);
       setDetallePropuesta(data);
       setActivo(data.activo);
     };
@@ -22,10 +21,6 @@ const DetallePropuesta = () => {
   if (!detallePropuesta) {
     return <div>Cargando...</div>;
   }
-
-  const toggleActivo = () => {
-    setActivo(!activo);
-  };
 
   return (
     <div className="table-responsive">
@@ -38,7 +33,7 @@ const DetallePropuesta = () => {
           </tr>
           <tr>
             <td>Nombre del Proyecto:</td>
-            <td>{detallePropuesta.nombreProyecto}</td>
+            <td>{detallePropuesta.nombrePropuesta}</td>
           </tr>
           <tr>
             <td>Modalidad:</td>
@@ -46,12 +41,13 @@ const DetallePropuesta = () => {
           </tr>
           <tr>
             <td>Descripción:</td>
-            <td>{detallePropuesta.description}</td>
+            <td>{detallePropuesta.descriptionPropuesta}</td>
           </tr>
           <tr>
             <td>Carrera:</td>
             <td>{detallePropuesta.carrera.nombre}</td>
           </tr>
+
           <tr>
             <td>Email:</td>
             <td>{detallePropuesta.email}</td>
@@ -68,12 +64,9 @@ const DetallePropuesta = () => {
             <td>Teléfono:</td>
             <td>{detallePropuesta.telefono}</td>
           </tr>
-
-          <tr>
-            <td></td>
-          </tr>
         </tbody>
       </table>
+      <div></div>
     </div>
   );
 };

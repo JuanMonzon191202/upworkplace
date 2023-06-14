@@ -136,7 +136,7 @@ function Formulario() {
           className="form-control"
           id="carrera"
           name="carrera"
-          value={formData.Carrera}
+          value={formData.carrera}
           onChange={handleChange}
         >
           <option value="">Seleccionar carrera</option>
@@ -145,6 +145,21 @@ function Formulario() {
               {carrera.nombre}
             </option>
           ))}
+        </select>
+      </div>
+      <div className="form-group">
+        <label htmlFor="modalidad">Modalidad</label>
+        <select
+          className="form-control"
+          id="modalidad"
+          name="modalidad"
+          value={formData.modalidad}
+          onChange={handleChange}
+        >
+          <option value="">Seleccionar modalidad</option>
+          <option value="Mixta">Mixta</option>
+          <option value="Presencial">Presencial</option>
+          <option value="En línea">En línea</option>
         </select>
       </div>
       <br />

@@ -65,7 +65,7 @@ class AlumnoView(GenericViewSet):
 # Carreta
 
 
-class PropuestaView(GenericViewSet):
+class PropuestaView(ModelViewSet):
     serializer_class = PropuestaSerializer
 
     def get_queryset(self):
@@ -74,20 +74,14 @@ class PropuestaView(GenericViewSet):
     def list(self, request):
         data = Propuesta.objects.all().order_by("-pk")
         serializer = PropuestaSerializer(data, many=True)
-
         return Response(serializer.data)
 
-    def create(selft, request):
+    def create(self, request):
         serializer = PropuestaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(
-                serializer.data,
-                status=201,
-            )
-        return Response(
-            {'error': 'error al crear el registro', 'errors': serializer.errors},
-        )
+            return Response(serializer.data, status=201)
+        return Response({'error': 'Error al crear el registro', 'errors': serializer.errors})
 
     def retrieve(self, request, pk=None):
         data = get_object_or_404(Propuesta, pk=pk)
@@ -96,18 +90,11 @@ class PropuestaView(GenericViewSet):
 
     def update(self, request, pk=None):
         objeto = get_object_or_404(Propuesta, pk=pk)
-
         serializer = self.serializer_class(objeto, data=request.data)
-
         if serializer.is_valid():
             serializer.save()
-            return Response(
-                {'menssage': 'registro actualizado correctamente'}
-            )
-        return Response(
-            {'error': 'Error en la actualizacion del regsitro',
-                'errors': serializer.errors}, status=400
-        )
+            return Response({'message': 'Registro actualizado correctamente'})
+        return Response({'error': 'Error en la actualización del registro', 'errors': serializer.errors}, status=400)
 
 
 class CarreraView(GenericViewSet):
@@ -123,15 +110,15 @@ class CarreraView(GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = CarreraSerializer(data=request.data)
+        serializer = EmpresaSolicitudSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(
-                serializer.data,
-                status=201,
-            )
+            carrera_id = serializer.validated_data.get('carrera')
+            carrera = Carrera.objects.get(id=carrera_id)
+            serializer.save(carrera=carrera)
+            return Response(serializer.data, status=201)
         return Response(
-            {'error': 'Error al crear el registro', 'errors': serializer.errors}, status=400,
+            {'error': 'Error al crear el registro', 'errors': serializer.errors},
+            status=400,
         )
 
     def retrieve(self, request, pk=None):
@@ -212,9 +199,15 @@ class EmpresaSolicitudView(GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = EmpresaSolicitudSerializer(data=request.data)
+        serializer = EmpresaSolicitudCreateSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            # Obtener el ID de la carrera desde la solicitud
+            carrera_id = request.data.get('carrera')
+
+            # Obtener la instancia de la carrera
+            carrera = Carrera.objects.get(pk=carrera_id)
+            # Guardar la solicitud con la instancia de la carrera
+            serializer.save(carrera=carrera)
             return Response(
                 serializer.data,
                 status=201,
@@ -226,7 +219,6 @@ class EmpresaSolicitudView(GenericViewSet):
     def retrieve(self, request, pk=None):
         data = get_object_or_404(EmpresaSolicitud, pk=pk)
         serializer = EmpresaSolicitudSerializer(data)
-
         return Response(serializer.data)
 
     def update(self, request, pk=None):
@@ -237,33 +229,8 @@ class EmpresaSolicitudView(GenericViewSet):
         if serializer.is_valid():
             serializer.save()
             return Response(
-                {'menssage': 'registro actualizado correctamente'}
+                {'message': 'Registro actualizado correctamente'}
             )
         return Response(
-            {'error': 'Error en la actualizacion del regsitro',
-                'errors': serializer.errors}, status=400
+            {'error': 'Error en la actualización del registro', 'errors': serializer.errors}, status=400
         )
-
-# class AlumnoView(ModelViewSet):
-#     queryset = Alumno.objects.all()
-#     serializer_class = AlumnoSerializer
-
-
-# class PropuestaView(ModelViewSet):
-#     queryset = Propuesta.objects.all()
-#     serializer_class = PropuestaSerializer
-
-
-# class CarreraView(ModelViewSet):
-#     queryset = Carrera.objects.all()
-#     serializer_class = CarreraSerializer
-
-
-# class EmpresaViwe(ModelViewSet):
-#     queryset = Empresa.objects.all()
-#     serializer_class = EmpresaSerializer
-
-
-# class EmpresaSolicitudView(ModelViewSet):
-#     queryset = EmpresaSolicitud.objects.all()
-#     serializer_class = EmpresaSolicitudSerializer

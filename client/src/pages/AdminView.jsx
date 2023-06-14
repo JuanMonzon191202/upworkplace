@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+// console.log(propuesta);
 const AdminView = () => {
   return (
     <div className="container">
@@ -16,17 +16,17 @@ const AdminView = () => {
           </Link>
         </div>
         <div className="col-md-6">
-          <Link to="#" style={rectangleStyles}>
+          <Link to="/Solicitudes-Aceptadas" style={rectangleStyles}>
             solicitudes Aceptadas
           </Link>
         </div>
         <div className="col-md-6">
-          <Link to="#" style={rectangleStyles}>
+          <Link to="/Propuestas-Alta" style={rectangleStyles}>
             Propuestas Dadas de Alta
           </Link>
         </div>
         <div className="col-md-6">
-          <Link to="#" style={rectangleStyles}>
+          <Link to="/Directorio-empresas" style={rectangleStyles}>
             Directorio de Empresas
           </Link>
         </div>

@@ -8,7 +8,7 @@ schema_view = get_schema_view(
         title=" API",
         default_version="v1",
         description="API Rest",
-        contact=openapi.Contact(email="203102@uptapachulas.edu.mx"),
+        contact=openapi.Contact(email="222003@uptapachulas.edu.mx"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,

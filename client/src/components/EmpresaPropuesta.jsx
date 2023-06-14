@@ -1,4 +1,5 @@
 const EmpresaPropuesta = ({ propuesta }) => {
+  console.log(propuesta);
   return (
     <div className="col">
       <div className="card h-100 ">
@@ -7,7 +8,7 @@ const EmpresaPropuesta = ({ propuesta }) => {
           <p className="card-text">{propuesta.nombreProyecto}</p>
         </div>
         <div className="card-footer">
-          <small className="text-nuted">{propuesta.carrera}</small>
+          {/* <small className="text-muted">{propuesta.carrera}</small> */}
         </div>
       </div>
     </div>
