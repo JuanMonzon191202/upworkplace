@@ -83,16 +83,31 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# coneccion a base de datos usando postgres de amazon aws
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbworkplace',
         'USER': 'postgres',
-        'PASSWORD': 'jukilopo',
-        'HOST': 'localhost',
-        'DATABASE_PORT': '5434',
+        'PASSWORD': 'jukamo2023',
+        'HOST': 'database-1.c6sl1500vnd3.us-east-2.rds.amazonaws.com',
+        'DATABASE_PORT': '5432',
     }
 }
+
+
+# coneccion a base de datos de forma local
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dbworkplace',
+#         'USER': 'postgres',
+#         'PASSWORD': 'jukilopo',
+#         'HOST': 'localhost',
+#         'DATABASE_PORT': '5434',
+#     }
+# }
 
 
 # Password validation
