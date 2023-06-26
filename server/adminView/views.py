@@ -110,16 +110,15 @@ class CarreraView(GenericViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = EmpresaSolicitudSerializer(data=request.data)
+        serializer = CarreraSerializer(data=request.data)
         if serializer.is_valid():
-            carrera_id = serializer.validated_data.get('carrera')
-            carrera = Carrera.objects.get(id=carrera_id)
-            serializer.save(carrera=carrera)
+            serializer.save()
             return Response(serializer.data, status=201)
         return Response(
             {'error': 'Error al crear el registro', 'errors': serializer.errors},
             status=400,
         )
+
 
     def retrieve(self, request, pk=None):
         data = get_object_or_404(Carrera, pk=pk)
