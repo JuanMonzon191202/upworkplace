@@ -27,7 +27,7 @@ class Alumno(models.Model):
         'Apellidos', max_length=100, help_text='apellidos del alumno')
     matricula = models.CharField(
         'Matricula', max_length=20, help_text='Matricula del alumno')
-    contrasenia = models.TextField('requisitos', blank=False)
+    
     emailAlumno = models.EmailField('Email', max_length=254,
                                     help_text=' email del alumno')
     telefonoAlumno = models.CharField('telefono', max_length=50)
