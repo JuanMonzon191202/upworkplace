@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import React, { useState, useEffect } from "react";
 
 function Formulario() {
@@ -11,6 +10,7 @@ function Formulario() {
     telefono: "",
     email: "",
     carrera: "",
+    modalidad: "",
   });
 
   const [carreras, setCarreras] = useState([]);
@@ -62,6 +62,7 @@ function Formulario() {
           name="nombreEmpresa"
           value={formData.nombreEmpresa}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -73,6 +74,7 @@ function Formulario() {
           name="nombreProyecto"
           value={formData.nombreProyecto}
           onChange={handleChange}
+          required
         />
       </div>
 
@@ -84,6 +86,7 @@ function Formulario() {
           name="description"
           value={formData.description}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -95,6 +98,7 @@ function Formulario() {
           name="puesto"
           value={formData.puesto}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -106,6 +110,7 @@ function Formulario() {
           name="nombreConsultante"
           value={formData.nombreConsultante}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -117,6 +122,7 @@ function Formulario() {
           name="telefono"
           value={formData.telefono}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -128,6 +134,7 @@ function Formulario() {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          required
         />
       </div>
       <div className="form-group">
@@ -138,6 +145,7 @@ function Formulario() {
           name="carrera"
           value={formData.carrera}
           onChange={handleChange}
+          required
         >
           <option value="">Seleccionar carrera</option>
           {carreras.map((carrera) => (
@@ -155,6 +163,7 @@ function Formulario() {
           name="modalidad"
           value={formData.modalidad}
           onChange={handleChange}
+          required
         >
           <option value="">Seleccionar modalidad</option>
           <option value="Mixta">Mixta</option>

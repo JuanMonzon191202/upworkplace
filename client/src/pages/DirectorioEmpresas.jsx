@@ -28,7 +28,7 @@ const SolicitudesRechazadas = () => {
 
             {/* Redirigir al detalle de la solicitud */}
             <Link
-              to={`/Detalle-Propuesta-Alta/${solicitud.id}`}
+              to={`/#/${solicitud.id}`}
               className="btn btn-primary"
             >
               Ver Detalles
