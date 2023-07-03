@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #         'NAME': 'dbworkplace',
 #         'USER': 'postgres',
 #         'PASSWORD': 'jukamo2023',
-#         'HOST': 'database-1.cvcc9rawxtss.us-east-1.rds.amazonaws.com',
+#         'HOST': '',
 #         'DATABASE_PORT': '5432',
 #     }
 # }
