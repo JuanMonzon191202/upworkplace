@@ -8,19 +8,19 @@ from rest_framework_simplejwt.views import (
 
 
 urlpatterns = [
-    path("login/", Login.as_view(), name="login"),
+    path("auth/login/", Login.as_view(), name="login"),
     path(
-        "refresh/",
+        "auth/refresh/",
         TokenRefreshView.as_view(),
         name="token_refresh",
     ),
     path(
-        "verify/",
+        "auth/verify/",
         TokenVerifyView.as_view(),
         name="token_verify",
     ),
     path(
-        "blacklist/",
+        "auth/blacklist/",
         TokenBlacklistView.as_view(),
         name="token_blacklist",
     ),

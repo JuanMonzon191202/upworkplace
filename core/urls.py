@@ -19,10 +19,11 @@ urlpatterns += static(
 
 urlpatterns += [
     path("admin/", admin.site.urls),
+    path(r"swagger/", include("server.apps.base.swagger")),
     path(r"v1/", include("server.apps.auth.router")),
     path(r"v1/", include("server.apps.user.router")),
     path(r"v1/", include("server.apps.base.router")),
-    path(r"swagger/", include("server.apps.base.swagger")),
+    path(r"v1/", include("server.apps.jobs.router")),
     path("", TemplateView.as_view(template_name="index.html"), name="index"),
     re_path(
         r"^(?:.*)/?$", TemplateView.as_view(template_name="index.html"), name="index"

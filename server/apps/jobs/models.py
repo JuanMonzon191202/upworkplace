@@ -1,9 +1,11 @@
 from django.db.models import *
 from server.apps.user.models import User
 from server.apps.alumn.models import Alumn
+from server.apps.base.models import Career
 from .choices import *
 
 
+# -----> Empresa <-----
 class Company(Model):
     name = CharField("Nombre", max_length=150)
     logo = ImageField("Logo", upload_to="company/logo", null=True)
@@ -11,7 +13,7 @@ class Company(Model):
     phone = CharField("Teléfono", max_length=15)
     country = CharField("País", max_length=55, blank=True)
     address = CharField("Dirección", max_length=255, blank=True)
-    user = ForeignKey(User, on_delete=CASCADE, verbose_name="Usuario")
+    user = OneToOneField(User, on_delete=CASCADE, verbose_name="Usuario")
     is_active = BooleanField("Activo", default=True)
 
     def __str__(self):
@@ -23,6 +25,7 @@ class Company(Model):
         verbose_name_plural = "Compañías"
 
 
+# -----> Vacantes <-----
 class Job(Model):
     company = ForeignKey(Company, on_delete=CASCADE)
     title = CharField("Titulo", max_length=55)
@@ -31,6 +34,7 @@ class Job(Model):
     job_type = CharField("Tipo de trabajo", max_length=15, choices=job_type_choices)
     description = TextField("Descripción")
     salary = FloatField("Salario")
+    career = ForeignKey(Career, on_delete=RESTRICT, verbose_name="Carrera")
     is_active = BooleanField("Activo", default=True)
     created_at = DateTimeField("Fecha de creación", auto_now_add=True)
     updated_at = DateTimeField("Fecha de modifican", auto_now=True)
@@ -44,17 +48,18 @@ class Job(Model):
         verbose_name_plural = "Empleos"
 
 
-class Applications(Model):
+# -----> Postulaciones <-----
+class Application(Model):
     job = ForeignKey(Job, on_delete=CASCADE, verbose_name="Empleo")
     alumn = ForeignKey(Alumn, on_delete=CASCADE, verbose_name="Alumno")
-    cv = FileField("Currículo", upload_to="alumn/cv", null=True)
-    message = TextField("Mensaje", null=True, blank=True)
+    cv = FileField("Currículo", upload_to="alumn/cv")
+    message = TextField("Mensaje", null=True, blank=True, default=None)
     interview_date = DateTimeField(
         "Fecha para entrevista", null=True, blank=True, default=None
     )
     status = CharField(
         "Estatus",
-        max_length=25,
+        max_length=30,
         choices=application_status_choices,
         default="postulado",
     )
@@ -65,6 +70,6 @@ class Applications(Model):
         return f"{self.job.title} - {self.alumn}"
 
     class Meta:
-        db_table = "UP_CAT_APPLICATIONS"
+        db_table = "UP_CAT_APPLICATION"
         verbose_name = "Aplicación"
         verbose_name_plural = "Aplicaciones"

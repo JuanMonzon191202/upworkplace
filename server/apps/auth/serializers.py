@@ -27,7 +27,8 @@ class TokenSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         # add custom claims
-        token["roles"] = RoleSerializer(instance=user.roles).data
+        print(user.roles)
+        token["roles"] = user.roles.name
         return token
 
 

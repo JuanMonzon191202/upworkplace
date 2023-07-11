@@ -10,8 +10,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 # User
 from server.apps.auth.serializers import TokenSerializer, UserCustomSerializer
 
-# from server.apps.alumn.models import Alumn
-# from server.apps.alumn.serializers import AlumnSerializer
+from server.apps.alumn.models import Alumn
+from server.apps.alumn.serializers import AlumnSerializer
+from server.apps.jobs.models import Company
+from server.apps.jobs.serializers import CompanySerializer
 
 
 class Login(TokenObtainPairView):
@@ -27,14 +29,18 @@ class Login(TokenObtainPairView):
             if login_serializer.is_valid():
                 user_serializer = UserCustomSerializer(user)
                 profile = {}
-                # if "ALUMNO" in user_serializer.data["roles"]:
-                #     alumn = Alumn.objects.get(user=user)
-                #     profile["alumn"] = alumn.pk
-                #     profile["career"] = {
-                #         "id": alumn.group.career.id,
-                #         "name": alumn.group.career.name,
-                #     }
-                #     profile["quarter"] = alumn.group.quarter
+                if user_serializer.data["roles"] == "ALUMNO":
+                    try:
+                        alumn = Alumn.objects.get(user=user)
+                        profile["alumn"] = AlumnSerializer(instance=alumn).data
+                    except:
+                        pass
+                if user_serializer.data["roles"] == "EMPRESA":
+                    try:
+                        alumn = Company.objects.get(user=user)
+                        profile["company"] = CompanySerializer(instance=alumn).data
+                    except:
+                        pass
 
                 data = {
                     "token": {

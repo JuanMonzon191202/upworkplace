@@ -3,7 +3,7 @@ from server.apps.user.models import User
 from server.apps.base.models import Career
 
 
-# -----Tabla Alumno----
+# -----> Alumno <----
 class Alumn(Model):
     enrollment = BigAutoField(
         "Matrícula", auto_created=True, primary_key=True, serialize=False

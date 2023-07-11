@@ -31,7 +31,9 @@ class User(AbstractUser):
         verbose_name="Rol",
         on_delete=RESTRICT,
         help_text="Designa el rol que tendrá el usuario",
-        default=1,
+        default=Role.objects.get_or_create(
+            name="ADMIN", defaults={"description": "ADMIN"}
+        )[0].pk,
     )
 
     def clean_rfc(self, value) -> None:
