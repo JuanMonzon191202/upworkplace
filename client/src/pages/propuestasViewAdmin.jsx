@@ -46,14 +46,6 @@ const AdminView = () => {
                 </button>
               </Link>
             </div>
-            {/* <Link to={`/detalle-propuesta/${propuesta.id}`}>
-              <button
-                type="button"
-                className="btn btn-outline-primary btn-sm btn-block"
-              >
-                Ver Detalles
-              </button>
-            </Link> */}
           </div>
         ))}
       </div>

@@ -5,13 +5,13 @@ const Propuestas = ({ propuesta }) => {
       <div className="card h-100 ">
         <div className="card-body">
           <h5 className="card-title">{propuesta.nombrePropuesta}</h5>
-          <p className="card-text">
-            {propuesta.descriptionPropuesta.slice(0, 50)}...
-          </p>
+          <br />
+          <h5 className="card-title">{propuesta.nombreEmpresa}</h5>
+          <p className="card-text">{propuesta.modalidad}</p>
         </div>
         <div className="card-footer">
           <small className="text-nuted">
-            {propuesta.requisitos.slice(0, 25)}...
+            {propuesta.carrera}
           </small>
         </div>
       </div>

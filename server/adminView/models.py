@@ -1,6 +1,5 @@
 from django.db import models
 import bcrypt
-# Create your models here.
 
 
 class Carrera(models.Model):
@@ -15,9 +14,6 @@ class Carrera(models.Model):
         return self.nombre
 
 
-# Carreta
-
-
 class Alumno(models.Model):
     Carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
 
@@ -27,7 +23,7 @@ class Alumno(models.Model):
         'Apellidos', max_length=100, help_text='apellidos del alumno')
     matricula = models.CharField(
         'Matricula', max_length=20, help_text='Matricula del alumno')
-    
+
     emailAlumno = models.EmailField('Email', max_length=254,
                                     help_text=' email del alumno')
     telefonoAlumno = models.CharField('telefono', max_length=50)
@@ -50,10 +46,6 @@ class Empresa(models.Model):
     telefonoResponsable = models.CharField('telefono', max_length=50)
     carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
     activo = models.BooleanField('activo', default=True)
-    # nombreConsultante = models.CharField('Cnombre', max_length=100)
-    # telefono = models.CharField('telefono', max_length=50)
-    # email = models.EmailField('email', max_length=254)
-    # carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name = ("Empresa")
@@ -83,7 +75,6 @@ class Propuesta(models.Model):
     carrera = models.ForeignKey(Carrera, on_delete=models.PROTECT)
     activo = models.BooleanField('activo', default=True)
     alta = models.BooleanField("alta", default=False)
-    # activo = models.BooleanField('activo', default=True)
 
     class Meta:
         verbose_name = ("Propuesta")

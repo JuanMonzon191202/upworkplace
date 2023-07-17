@@ -6,10 +6,11 @@ const UserView = () => {
   const [propuesta, setPropuesta] = useState([]);
 
   const getPropuesta = async () => {
-    const response = await fetch("http://127.0.0.1:8000/api/Propuesta");
+    const response = await fetch("http://127.0.0.1:8000/api/Propuesta/{1}");
     const data = await response.json();
     console.log(data);
     setPropuesta(data);
+    
   };
   useEffect(() => {
     getPropuesta();
