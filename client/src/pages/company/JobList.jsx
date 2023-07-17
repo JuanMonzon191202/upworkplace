@@ -15,6 +15,7 @@ const JobList = () => {
   const jobs = baseApi.getJobs.useQuery({
     company: user?.company.id,
   });
+  
 
   const [pathJob] = baseApi.patchJobs.useLazyQuery();
   const [postJob] = baseApi.postJobs.useLazyQuery();

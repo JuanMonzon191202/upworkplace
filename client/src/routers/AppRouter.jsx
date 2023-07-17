@@ -4,6 +4,8 @@ import PrivateRouter from "./PrivateRouter";
 import AppLayout from "../layouts/AppLayout";
 import LoginLayout from "../layouts/LoginLayout";
 
+import Home from "../pages/Home";
+
 import Login from "../pages/login/Login";
 import Jobs from "../pages/jobs/Jobs";
 import JobDetail from "../pages/jobs/JobDetail";
@@ -12,18 +14,25 @@ import JobDetail from "../pages/jobs/JobDetail";
 import JobList from "../pages/company/JobList";
 import Applications from "../pages/company/Applications";
 
+// Alumn
+// import AlumnJobList from "../pages/alumn/JobList";
+import PostulacionDetail from "../pages/alumn/ApplicationsAlumn";
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AppLayout />}>
           {/* Rutas publicas */}
-          <Route path={"/"} element={<p>Home</p>} />
+          <Route path={"/"} element={<Home />} />
 
           {/* Rutas privadas - Alumno */}
           <Route path="/" element={<PrivateRouter allowedRoles={"ALUMNO"} />}>
             <Route path="/empleos" element={<Jobs />} />
             <Route path="/empleos/:id" element={<JobDetail />} />
+            <Route path="/postulaciones" element={<PostulacionDetail />} />
+            {/* <Route path="/postulaciones/postulacion/:id" element ={<PostulacionDetail/>}/> */}
+            {/* <Route path="/postulacioes" element={<ApplicationsAlumn />} /> */}
           </Route>
 
           {/* Rutas privadas - Empresa */}

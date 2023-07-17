@@ -59,7 +59,10 @@ const Jobs = () => {
       <div className="container mt-4">
         <div className="row">
           {/* Filtro */}
-          <div className="col-md-4 p-2 pe-4">
+          <div
+            className="col-md-4 p-2 pe-4"
+            style={{ backgroundColor: "#D8E1E9" }}
+          >
             <div className="mb-3">
               <label htmlFor="search" className="form-label">
                 Palabras clave
@@ -217,8 +220,7 @@ const Jobs = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div className="modal-body">
-                {/* // TODO: mostrar información del empleo seleccionado */}
-                <input
+              <input
                   type="text"
                   name="job"
                   defaultValue={jobSelected?.id}
@@ -230,8 +232,45 @@ const Jobs = () => {
                   defaultValue={user?.alumn?.enrollment}
                   hidden
                 />
+                <h5>Información del empleo seleccionado:</h5>
+                <div className="mb-3">
+                  <label htmlFor="jobTitle" className="form-label">
+                    Título del empleo:
+                  </label>
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    className="form-control"
+                    value={jobSelected?.title}
+                    readOnly
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="jobCompany" className="form-label">
+                    Compañía:
+                  </label>
+                  <input
+                    type="text"
+                    id="jobCompany"
+                    className="form-control"
+                    value={jobSelected?.company?.name}
+                    readOnly
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="jobDescription" className="form-label">
+                    Descripción:
+                  </label>
+                  <textarea
+                    id="jobDescription"
+                    className="form-control"
+                    rows={4}
+                    value={jobSelected?.description}
+                    readOnly
+                  />
+                </div>
                 <div className="form-group">
-                  <label htmlFor="cv">Currículum</label>
+                  <label htmlFor="cv">Currículum:</label>
                   <input
                     id="cv"
                     name="cv"
@@ -246,6 +285,7 @@ const Jobs = () => {
                 <button type="submit" className="btn btn-primary">
                   Enviar postulación
                 </button>
+                
               </div>
             </form>
           </div>

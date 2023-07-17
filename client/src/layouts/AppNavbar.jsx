@@ -10,9 +10,12 @@ const AppNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <a class="navbar-brand" href="#">
-          <img src="/Logo.svg" alt="Bootstrap" width="50" height="50" />
-        </a>
+        <NavLink className="nav-link" to="/">
+          <a className="navbar-brand">
+            <img src="/Logo.svg" alt="Bootstrap" width="60" height="60" />
+          </a>
+        </NavLink>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -39,11 +42,18 @@ const AppNavbar = () => {
               </li>
             )}
             {roles && roles === "ALUMNO" && (
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/empleos">
-                  Buscar Empleo
-                </NavLink>
-              </li>
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/empleos">
+                    Buscar Empleo
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/postulaciones">
+                    Solicutudes
+                  </NavLink>
+                </li>
+              </>
             )}
             {roles ? (
               <li className="nav-item">
