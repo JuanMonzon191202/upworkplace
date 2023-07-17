@@ -9,7 +9,7 @@ const color2 = "rgba(147, 255, 219, 0.1)";
 
 const Home = () => {
   return (
-    <div className="container">
+    <>
       <div
         id="carouselExampleDark1"
         className="carousel carousel-dark slide"
@@ -94,7 +94,6 @@ const Home = () => {
           <span
             className="carousel-control-prev-icon"
             aria-hidden="true"
-            
           ></span>
           <span className="visually-hidden">Previous</span>
         </button>
@@ -112,79 +111,199 @@ const Home = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <br />
-      <br />
 
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Información de la página</h5>
-          <p className="text-justify">
-            Al concluir los estudios, los egresados se enfrentan al desafío de
-            encontrar un empleo acorde a su carrera, lo cual puede ser
-            complicado. Para abordar esta situación, la página web de
-            UPWorkplace ofrecerá una plataforma en línea segura y fácil de usar
-            que permita a los egresados crear y mantener un perfil profesional,
-            y a los empleadores buscar y seleccionar candidatos. El proyecto se
-            enfocará en satisfacer la necesidad de inserción laboral de los
-            estudiantes y egresados de la universidad, brindando beneficios a la
-            comunidad universitaria.
-          </p>
+      <section class="container my-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>¿Qué es nuestra plataforma?</h2>
+            <p>
+              La Bolsa de Trabajo de la Universidad Politécnica de Tapachula es
+              una plataforma en línea que conecta a estudiantes y egresados con
+              empresas que buscan talento. Nuestra misión es facilitar la
+              inserción laboral de nuestros alumnos y mejorar su empleabilidad.
+            </p>
+            <p>
+              Las empresas registradas pueden publicar ofertas de empleo y
+              acceder a un amplio pool de talento altamente capacitado en
+              diversas áreas de estudio.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h2>Estadísticas</h2>
+            <p>Algunas estadísticas interesantes sobre nuestra plataforma:</p>
+            <ul>
+              <li>Empresas registradas: 50</li>
+              <li>Ofertas de empleo disponibles: 200</li>
+              <li>Alumnos registrados: 1000</li>
+              <li>Alumnos colocados en empleos: 800</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <br />
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Contacto</h5>
-          <p>Correo: contacto@uptapachula.edu.mx</p>
-          <p>Teléfono: (962) 689 0090 Ext. 1001-1021</p>
-          <p>
-            Dirección: Carretera Tapachula - Puerto Madero KM. 24 + 300.
-            Tapachula, Chiapas
-          </p>
-        </div>
-      </div>
-      <br />
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Redes Sociales</h5>
-          <ul className="list-unstyled social-links d-flex">
-            <li className="me-8">
-              <a href="https://www.facebook.com/UniversidadPolitecnicaTapachula">
-                <FaFacebook /> Facebook
-              </a>
-            </li>
-            <li className="me-3">
-              <a href="https://www.youtube.com/@universidadpolitecnicadeta883">
-                <FaYoutube /> YouTube
-              </a>
-            </li>
-            <li className="me-3">
-              <a href="https://www.tiktok.com/@uptapachula/video/7103604509821144325?is_from_webapp=1&sender_device=pc&web_id=7255566081532151302">
-                <FaTiktok /> TikTok
-              </a>
-            </li>
-            <li className="me-3">
-              <a href="https://www.instagram.com/uptapachula/?hl=es-la">
-                <FaInstagram /> Instagram
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      </section>
 
-      <br />
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Página web</h5>
-          <p>
-            Visita nuestra página web oficial:{" "}
-            <a href="https://www.uptapachula.edu.mx/">
-              UNIVERSIDAD POLITÉCNICA DE TAPACHULA
-            </a>
-          </p>
+      <section class="bg-light text-center py-5">
+        <h2>¿Cómo funciona?</h2>
+        <p>
+          1. Las empresas registradas publican sus ofertas de trabajo en la
+          plataforma, especificando los requisitos y responsabilidades del
+          puesto.
+        </p>
+        <p>
+          2. Los alumnos y egresados pueden explorar las ofertas de empleo y
+          postularse a aquellas que se ajusten a sus perfiles y objetivos
+          profesionales.
+        </p>
+        <p>
+          3. Las empresas revisan las solicitudes recibidas y contactan
+          directamente a los candidatos preseleccionados para llevar a cabo el
+          proceso de selección.
+        </p>
+        <p>
+          4. Los alumnos seleccionados son contratados, y tanto ellos como las
+          empresas pueden dar seguimiento al proceso desde la plataforma.
+        </p>
+      </section>
+
+      <section class="container my-5">
+        <h2>Beneficios para estudiantes y empresas</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Para estudiantes</h4>
+            <ul>
+              <li>
+                Acceso a múltiples ofertas laborales de empresas reconocidas.
+              </li>
+              <li>
+                Posibilidad de encontrar empleo acorde a su formación y
+                expectativas.
+              </li>
+              <li>
+                Oportunidad de adquirir experiencia y desarrollar habilidades
+                profesionales.
+              </li>
+              <li>Asesoría y apoyo en el proceso de búsqueda de empleo.</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4>Para empresas</h4>
+            <ul>
+              <li>
+                Acceso a una base de datos de candidatos altamente calificados.
+              </li>
+              <li>
+                Publicación ilimitada de ofertas de trabajo en diferentes
+                categorías.
+              </li>
+              <li>
+                Facilidad para gestionar el proceso de selección y contacto con
+                los candidatos.
+              </li>
+              <li>
+                Promoción de su marca empleadora en el entorno universitario.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mt-5">
+        <div class="row mt-5">
+          <div class="col-md-6 offset-md-3">
+            <div class="card shadow">
+              <div class="card-body">
+                <h5 class="card-title">Formulario de Contacto</h5>
+                <form>
+                  <div class="mb-3">
+                    <label for="nombre" class="form-label">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombre"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="correo" class="form-label">
+                      Correo Electrónico
+                    </label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="correo"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="mensaje" class="form-label">
+                      Mensaje
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="mensaje"
+                      rows="4"
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Enviar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+              <div class="card-body">
+                <h5 class="card-title">Contacto</h5>
+                <p>
+                  <strong>Correo:</strong> contacto@uptapachula.edu.mx
+                </p>
+                <p>
+                  <strong>Teléfono:</strong> (962) 689 0090 Ext. 1001-1021
+                </p>
+                <p>
+                  <strong>Dirección:</strong> Carretera Tapachula - Puerto
+                  Madero KM. 24 + 300. Tapachula, Chiapas
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+              <div class="card-body">
+                <h5 class="card-title">Redes Sociales</h5>
+                <ul class="list-unstyled social-links d-flex">
+                  <li class="me-8">
+                    <a href="https://www.facebook.com/UniversidadPolitecnicaTapachula">
+                      <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                  </li>
+                  <li class="me-3">
+                    <a href="https://www.youtube.com/@universidadpolitecnicadeta883">
+                      <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                  </li>
+                  <li class="me-3">
+                    <a href="https://www.tiktok.com/@uptapachula/video/7103604509821144325?is_from_webapp=1&sender_device=pc&web_id=7255566081532151302">
+                      <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                  </li>
+                  <li class="me-3">
+                    <a href="https://www.instagram.com/uptapachula/?hl=es-la">
+                      <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

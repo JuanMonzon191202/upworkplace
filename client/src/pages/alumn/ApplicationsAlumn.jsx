@@ -13,6 +13,23 @@ const Applications = () => {
     (application) => application.status !== "eliminado"
   );
 
+  const getBadgeClass = (status) => {
+    switch (status) {
+      case "aceptado":
+        return "bg-success";
+      case "rechazado":
+        return "bg-danger";
+      case "visto":
+        return "bg-info";
+      case "programado para entrevistar":
+        return "bg-primary";
+      case "postulado":
+        return "bg-warning text-dark";
+      default:
+        return "";
+    }
+  };
+
   return (
     <>
       <div className="container mt-4 p-0">
@@ -48,22 +65,9 @@ const Applications = () => {
                 </div>
                 <div className="card-footer">
                   <div
-                    className="status"
-                    style={{
-                      backgroundColor:
-                        data.status === "aceptado"
-                          ? "#00FF3E"
-                          : data.status === "rechazado"
-                          ? "#FF8678"
-                          : data.status === "visto"
-                          ? "#00FFC9"
-                          : data.status === "programado para entrevistar"
-                          ? "#A778FF"
-                          : data.status === "postulado"
-                          ? "#E8FF00"
-                          : "",
-                      borderRadius: 20,
-                    }}
+                    className={`status badge rounded-pill ${getBadgeClass(
+                      data.status
+                    )}`}
                   >
                     Estatus: {data.status}
                   </div>

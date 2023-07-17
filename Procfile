@@ -1,0 +1,1 @@
+web: python manage.py collectstatic --noinput; python manage.py makemigrations user alumn base jobs; python manage.py migrate; python manage.py loaddata ./server/fixtures/data.json; gunicorn core.wsgi

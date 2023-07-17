@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentRole, logOut } from "../app/states/auth";
+import logo from "/logo.png";
 
 const AppNavbar = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const AppNavbar = () => {
       <div className="container">
         <NavLink className="nav-link" to="/">
           <a className="navbar-brand">
-            <img src="/Logo.svg" alt="Bootstrap" width="60" height="60" />
+            <img src={logo} alt="UpWorkPlace" width="60" height="60" />
           </a>
         </NavLink>
 

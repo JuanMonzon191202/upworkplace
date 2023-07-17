@@ -59,79 +59,78 @@ const Jobs = () => {
       <div className="container mt-4">
         <div className="row">
           {/* Filtro */}
-          <div
-            className="col-md-4 p-2 pe-4"
-            style={{ backgroundColor: "#D8E1E9" }}
-          >
-            <div className="mb-3">
-              <label htmlFor="search" className="form-label">
-                Palabras clave
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="search"
-                name="search"
-                placeholder="Puesto, área laboral o empresa"
-                onChange={onChangeFilter}
-                value={filter.search}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="location" className="form-label">
-                Carrera
-              </label>
-              <select
-                className="form-select"
-                id="career"
-                name="career"
-                onChange={onChangeFilter}
-                value={filter.career}
-              >
-                <option value="">TODAS</option>
-                {carees.data?.map((career) => (
-                  <option value={career.id} key={career.id}>
-                    {career.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-3">
-              <label className="form-label" htmlFor="job_type">
-                Tipo de trabajo
-              </label>
-              <select
-                id="job_type"
-                name="job_type"
-                className="form-select"
-                onChange={onChangeFilter}
-                value={filter.job_type}
-              >
-                <option value="">TODAS</option>
-                <option value="tiempo completo">Tiempo completo</option>
-                <option value="medio tiempo">Medio tiempo</option>
-                <option value="indeterminado">Indeterminado</option>
-                <option value="temporal">Temporal</option>
-                <option value="voluntariado">Voluntariado</option>
-                <option value="prácticas">Prácticas</option>
-              </select>
-            </div>
-            <div className="mb-3">
-              <label className="form-label" htmlFor="workplace">
-                Modalidad
-              </label>
-              <select
-                id="workplace"
-                name="workplace"
-                className="form-select"
-                onChange={onChangeFilter}
-                value={filter.workplace}
-              >
-                <option value="">TODAS</option>
-                <option value="remoto">Remoto</option>
-                <option value="presencial">Presencial</option>
-                <option value="híbrido">Híbrido</option>
-              </select>
+          <div className="col-md-4 p-2 pe-4">
+            <div style={{ backgroundColor: "#D8E1E9" }} className="p-3">
+              <div className="mb-3">
+                <label htmlFor="search" className="form-label">
+                  Palabras clave
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="search"
+                  name="search"
+                  placeholder="Puesto, área laboral o empresa"
+                  onChange={onChangeFilter}
+                  value={filter.search}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="location" className="form-label">
+                  Carrera
+                </label>
+                <select
+                  className="form-select"
+                  id="career"
+                  name="career"
+                  onChange={onChangeFilter}
+                  value={filter.career}
+                >
+                  <option value="">TODAS</option>
+                  {carees.data?.map((career) => (
+                    <option value={career.id} key={career.id}>
+                      {career.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="job_type">
+                  Tipo de trabajo
+                </label>
+                <select
+                  id="job_type"
+                  name="job_type"
+                  className="form-select"
+                  onChange={onChangeFilter}
+                  value={filter.job_type}
+                >
+                  <option value="">TODAS</option>
+                  <option value="tiempo completo">Tiempo completo</option>
+                  <option value="medio tiempo">Medio tiempo</option>
+                  <option value="indeterminado">Indeterminado</option>
+                  <option value="temporal">Temporal</option>
+                  <option value="voluntariado">Voluntariado</option>
+                  <option value="prácticas">Prácticas</option>
+                </select>
+              </div>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="workplace">
+                  Modalidad
+                </label>
+                <select
+                  id="workplace"
+                  name="workplace"
+                  className="form-select"
+                  onChange={onChangeFilter}
+                  value={filter.workplace}
+                >
+                  <option value="">TODAS</option>
+                  <option value="remoto">Remoto</option>
+                  <option value="presencial">Presencial</option>
+                  <option value="híbrido">Híbrido</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -220,7 +219,7 @@ const Jobs = () => {
             </div>
             <form onSubmit={handleSubmit}>
               <div className="modal-body">
-              <input
+                <input
                   type="text"
                   name="job"
                   defaultValue={jobSelected?.id}
@@ -285,7 +284,6 @@ const Jobs = () => {
                 <button type="submit" className="btn btn-primary">
                   Enviar postulación
                 </button>
-                
               </div>
             </form>
           </div>

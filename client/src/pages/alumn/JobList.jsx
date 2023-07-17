@@ -2,18 +2,13 @@ import { baseApi } from "../../services";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../app/states/auth";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const JobList = () => {
   const user = useSelector(selectCurrentUser);
-  console.log(user);
-
-  const carees = baseApi.getCarees.useQuery();
 
   const jobs = baseApi.getApplications.useQuery({
     alumn: user?.alumn.enrollment,
   });
-  console.log(jobs.data);
 
   return (
     <>
@@ -33,7 +28,6 @@ const JobList = () => {
                     >
                       {job.job.title}
                     </Link>
-                   
                   </div>
                   <p className="job-description">{job.job.description}</p>
                 </div>
